@@ -1,36 +1,34 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "Nguoi.h"
+#include "QuanLyNhanVien.h"
 using namespace std;
 #pragma once 
 
-class NhanVien {
+class NhanVien : public Nguoi {
 	friend class QuanLyNhanVien;
 protected:
 	string maNhanVien;
-	string namSinh;
-	string hoTen, queQuan;
+	string maPhong;
+	string maNguoiQuanly;
 public:
-	virtual void Input()
+	virtual void Nhap()
 	{
+		Nguoi::Nhap();
 		cout << "Nhap ma nhan vien: ";
 		cin >> maNhanVien;
-		cout << "Nhap ho ten: ";
-		cin.ignore();
-		getline(cin, hoTen);
-		cout << "Nhap que quan:";
-		cin.ignore();
-		getline(cin, queQuan);
-		cout << "nhap nam sinh:";
-		cin >> namSinh;
+		cout << "Nhap ma phong: ";
+		cin >> maPhong;
+		cout << "Nhap ma nguoi quan ly:";
+		cin >> maNguoiQuanly;
 	}
-	virtual void Output()
+	virtual void Xuat()
 	{
+		Nguoi::Xuat();
 		cout << "Ma nhan vien: " << maNhanVien << endl;
-		cout << "Ho ten: " << hoTen << endl;
-		cout << "Que quan: " << queQuan << endl;
-		cout << "Nam sinh: " << namSinh << endl;
+		cout << "Ma phong: " << maPhong << endl;
+		cout << "Ma nguoi quan ly: " << maNguoiQuanly << endl;
 	}
-	virtual void OutputFile(ofstream& f) = 0;
-	virtual int TinhTienLuong() = 0;
+	virtual void XuatFile(ofstream& f) = 0;
 };

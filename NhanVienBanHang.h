@@ -8,37 +8,24 @@ class NhanVienBanHang : public NhanVien {
 	friend class QuanLyNhanVien;
 private:
 	int soSanPhamBanDuoc;
-	int luongCanBan;
 public:
-	void Input()
+	void Nhap()
 	{
-		NhanVien::Input();
+		NhanVien::Nhap();
 		cout << "Nhap so san pham ban duoc: ";
 		cin >> soSanPhamBanDuoc;
-		cout << "Nhap luong can ban: ";
-		cin >> luongCanBan;
 	}
-	void Output()
+	void Xuat()
 	{
-		NhanVien::Output();
+		NhanVien::Xuat();
 		cout << "So san pham ban duoc: " << soSanPhamBanDuoc << endl;
-		cout << "Luong can ban: " << this->TinhTienLuong() << endl;
 	}
-	void OutputFile(ofstream& f)
+	void XuatFile(ofstream& f)
 	{
-		f << "Salesclerk|";
-		f << hoTen << "|";
-		f << maNhanVien << "|";
+		f << ten << "|";
 		f << queQuan << "|";
-		f << namSinh << "|";
-		f << luongCanBan << "|";
+		f << ngaySinh << "|";
+		f << maNhanVien << "|";
 		f << soSanPhamBanDuoc << endl;
-	}
-	int TinhTienLuong()
-	{
-		if (soSanPhamBanDuoc >= 30)
-			return (luongCanBan + (soSanPhamBanDuoc * 500));
-		else
-			return luongCanBan;
 	}
 };
