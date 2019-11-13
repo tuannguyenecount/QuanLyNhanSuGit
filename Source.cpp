@@ -8,6 +8,7 @@
 #include <string.h>
 #include <cstdlib>
 #include "QuanLyNhanVien.h"
+#include "QuanLyPhong.h"
 using namespace std;
 
 
@@ -15,6 +16,7 @@ int main()
 {
 	QuanLyNhanVien quanLyNhanVien;
 	NhanVien* nv = NULL;
+	QuanLyPhong quanLyPhong;
 	int chon;
 	do {
 		system("cls");
@@ -26,6 +28,8 @@ int main()
 		cout << "5. TIM KIEM NHAN VIEN THEO ID" << endl;
 		cout << "6. XOA NHAN VIEN THEO ID" << endl;
 		cout << "7. XEM TONG LUONG NHAN VIEN" << endl;
+		cout << "8. THEM PHONG BAN "<<endl;
+		cout << "9. XEM DANH SACH PHONG BAN"<<endl;
 		cout << "CHON MENU: ";
 		cin >> chon;
 		switch (chon)
@@ -33,32 +37,32 @@ int main()
 			case 1: {
 				cout << "------------NHAP THONG TIN NHAN VIEN BAN HANG------------" << endl;
 				nv = new NhanVienBanHang();
-				nv->Input();
-				quanLyNhanVien.AddToList(nv);
+				nv->Nhap();
+				quanLyNhanVien.ThemNhanVien(nv);
 				break;
 			}
 			case 2: {
 				cout << "------------NHAP THONG TIN NHAN VIEN KE TOAN------------" << endl;
 				nv = new NhanVienKeToan();
-				nv->Input();
-				quanLyNhanVien.AddToList(nv);
+				nv->Nhap();
+				quanLyNhanVien.ThemNhanVien(nv);
 				break;
 			}
 			case 3: {
-				quanLyNhanVien.ShowSalesClerk();
+				quanLyNhanVien.XemDanhSachNhanVienBanHang();
 				system("pause");
 				break;
 			}
 			case 4: {
-				quanLyNhanVien.ShowAccountant();
+				quanLyNhanVien.XemDanhSachNhanVienKeToan();
 				system("pause");
 				break;
 			}
 			case 5: {
-				string id;
+				string maNhanVien;
 				cout << "Nhap ma nhan vien can tim:\n";
-				cin >> id;
-				NhanVien* nv = quanLyNhanVien.SearchEmployee(id);
+				cin >> maNhanVien;
+				NhanVien* nv = quanLyNhanVien.TimNhanVien(maNhanVien);
 				if (nv == NULL)
 				{
 					cout << "Khong tim thay nhan vien!";
@@ -66,7 +70,7 @@ int main()
 				else
 				{
 					cout << "Ket qua tim kiem\n";
-					nv->Output();
+					nv->Xuat();
 				}
 				system("pause");
 				break;
@@ -76,20 +80,34 @@ int main()
 				string maNhanVien;
 				cout << "Nhap ma nhan vien can xoa:\n";
 				cin >> maNhanVien;
-				NhanVien* nv = quanLyNhanVien.SearchEmployee(maNhanVien);
+				NhanVien* nv = quanLyNhanVien.TimNhanVien(maNhanVien);
 				if (nv == NULL)
 				{
 					cout << "Khong tim thay nhan vien!";
 				}
 				else
 				{
-					quanLyNhanVien.DeleteEmployee(maNhanVien);
+					quanLyNhanVien.XoaNhanVien(maNhanVien);
 				}
 				break;
 			}
-			case 7:
-			{
-				cout << "Tong tien phai tra cho toan bo nhan vien la " << quanLyNhanVien.GetSumSalary();
+//			case 7:
+//			{
+//				cout << "Tong tien phai tra cho toan bo nhan vien la " << quanLyNhanVien.GetSumSalary();
+//				system("pause");
+//				break;
+//			}
+			case 8:{
+				Phong phong;
+				phong.Nhap();
+				quanLyPhong.ThemPhong(phong);
+				cout<<"Them thanh cong\n\n";
+				quanLyPhong.XemDanhSachPhong();
+				system("pause");
+				break;
+			}
+			case 9:{
+				quanLyPhong.XemDanhSachPhong();
 				system("pause");
 				break;
 			}
@@ -98,7 +116,5 @@ int main()
 			}
 		}
 	} while (chon != 0);
-	quanLyNhanVien.WriteSalesClerkToFile();
-	quanLyNhanVien.WriteAccountantToFile();
 }
 

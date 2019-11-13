@@ -2,11 +2,11 @@
 #include <string>
 #include <fstream>
 #include "Nguoi.h"
-#include "QuanLyNhanVien.h"
 using namespace std;
 #pragma once 
 
 class NhanVien : public Nguoi {
+private:
 	friend class QuanLyNhanVien;
 protected:
 	string maNhanVien;

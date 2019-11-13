@@ -20,12 +20,14 @@ public:
 		NhanVien::Xuat();
 		cout << "So san pham ban duoc: " << soSanPhamBanDuoc << endl;
 	}
-	void XuatFile(ofstream& f)
+	virtual void XuatFile(ofstream& f)
 	{
 		f << ten << "|";
 		f << queQuan << "|";
 		f << ngaySinh << "|";
 		f << maNhanVien << "|";
+		f << maPhong << "|";
+	//	f << maNguoiQuanLy << "|";
 		f << soSanPhamBanDuoc << endl;
 	}
 };
