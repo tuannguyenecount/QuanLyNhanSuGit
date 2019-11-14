@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include "QuanLyNhanVien.h"
 #include "QuanLyPhong.h"
+#include "QuanLyHopDongLaoDong.h"
+#include "QuanLyNghiPhep.h"
 using namespace std;
 
 
@@ -17,6 +19,8 @@ int main()
 	QuanLyNhanVien quanLyNhanVien;
 	NhanVien* nv = NULL;
 	QuanLyPhong quanLyPhong;
+	QuanLyHopDongLaoDong quanLyHopDongLaoDong;
+	QuanLyNghiPhep quanlyNghiPhep;
 	int chon;
 	do {
 		system("cls");
@@ -26,12 +30,21 @@ int main()
 		cout << "3. XEM DANH SACH NHAN VIEN BAN HANG" << endl;
 		cout << "4. XEM DANH SACH NHAN VIEN KE TOAN" << endl;
 		cout << "5. TIM KIEM NHAN VIEN THEO ID" << endl;
-		cout << "6. XOA NHAN VIEN THEO ID" << endl;
-		cout << "7. XEM TONG LUONG NHAN VIEN" << endl;
+		cout << "6. XEM NHAN VIEN THEO MA PHONG"<<endl;
+		cout << "7. XOA NHAN VIEN THEO ID" << endl;
 		cout << "8. THEM PHONG BAN "<<endl;
 		cout << "9. XEM DANH SACH PHONG BAN"<<endl;
+		cout << "10. SUA PHONG BAN"<<endl;
+		cout << "11. TAO HOP DONG LAO DONG"<<endl;
+		cout << "12. XEM DANH SACH HOP DONG LAO DONG HIEN CO"<<endl;
+		cout << "13. XOA HOP DONG LAO DONG"<<endl;
+		cout << "14. YEU CAU NGHI PHEP"<<endl;
+		cout << "15. XEM DANH SACH YEU CAU NGHI PHEP"<<endl;
+		cout << "16. TU CHOI YEU CAU NGHI PHEP"<<endl;
+		cout << "17. PHE DUYET YEU CAU NGHI PHEP"<<endl;
 		cout << "CHON MENU: ";
 		cin >> chon;
+		cin.ignore(1);
 		switch (chon)
 		{
 			case 1: {
@@ -49,12 +62,12 @@ int main()
 				break;
 			}
 			case 3: {
-				quanLyNhanVien.XemDanhSachNhanVienBanHang();
+				quanLyNhanVien.HienDanhSachNhanVienBanHang();
 				system("pause");
 				break;
 			}
 			case 4: {
-				quanLyNhanVien.XemDanhSachNhanVienKeToan();
+				quanLyNhanVien.HienDanhSachNhanVienKeToan();
 				system("pause");
 				break;
 			}
@@ -75,7 +88,16 @@ int main()
 				system("pause");
 				break;
 			}
-			case 6:
+			case 6:{
+				string maPhong;
+				cout<<"Nhap ma phong:\n";
+				cin>>maPhong;
+				cout<<"Danh sach nhan vien thuoc phong nay\n";
+				quanLyNhanVien.XemNhanVienThuocPhong(maPhong);
+				system("pause");
+				break;
+			}
+			case 7:
 			{
 				string maNhanVien;
 				cout << "Nhap ma nhan vien can xoa:\n";
@@ -91,12 +113,6 @@ int main()
 				}
 				break;
 			}
-//			case 7:
-//			{
-//				cout << "Tong tien phai tra cho toan bo nhan vien la " << quanLyNhanVien.GetSumSalary();
-//				system("pause");
-//				break;
-//			}
 			case 8:{
 				Phong phong;
 				phong.Nhap();
@@ -109,6 +125,47 @@ int main()
 			case 9:{
 				quanLyPhong.XemDanhSachPhong();
 				system("pause");
+				break;
+			}
+			case 10:{
+				quanLyPhong.SuaPhong();
+				system("pause");
+				break;
+			}
+			case 11:{
+				HopDongLaoDong hopDongMoi;
+				hopDongMoi.TaoHopDong();
+				quanLyHopDongLaoDong.ThemVaoDanhSach(hopDongMoi);
+				cout<<"Them thanh cong.";
+				system("pause");
+				break;
+			}
+			case 12:{
+				quanLyHopDongLaoDong.XemDanhSach();
+				system("pause");
+				break;
+			}
+			case 13:{
+				quanLyHopDongLaoDong.XoaHopDong();
+				break;
+			}
+			case 14:{
+				NghiPhep nghiPhep;
+				nghiPhep.YeuCauNghiPhep();
+				quanlyNghiPhep.ThemNghiPhep(nghiPhep);
+				break;
+			}
+			case 15:{
+				quanlyNghiPhep.XemDanhSach();
+				system("pause");
+				break;
+			}
+			case 16:{
+				quanlyNghiPhep.TuChoi();
+				break;
+			}
+			case 17:{
+				quanlyNghiPhep.PheDuyet();
 				break;
 			}
 			case 0: {

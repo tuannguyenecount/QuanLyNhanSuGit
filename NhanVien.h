@@ -17,11 +17,13 @@ public:
 	{
 		Nguoi::Nhap();
 		cout << "Nhap ma nhan vien: ";
-		cin >> maNhanVien;
+		getline(cin, maNhanVien);
+		
 		cout << "Nhap ma phong: ";
-		cin >> maPhong;
+		getline(cin, maPhong);
+		
 		cout << "Nhap ma nguoi quan ly:";
-		cin >> maNguoiQuanly;
+		getline(cin, maNguoiQuanly);
 	}
 	virtual void Xuat()
 	{
