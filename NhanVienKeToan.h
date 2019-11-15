@@ -3,6 +3,7 @@
 #include <fstream>
 #include "NhanVien.h"
 using namespace std;
+#pragma once 
 
 class NhanVienKeToan : public NhanVien {
 	friend class QuanLyNhanVien;
@@ -14,6 +15,7 @@ public:
 		NhanVien::Nhap();
 		cout << "Nhap so ngay tang ca: ";
 		cin >> soNgayTangCa;
+		cin.ignore(1);
 	}
 	void Xuat()
 	{
@@ -23,11 +25,11 @@ public:
 	virtual void XuatFile(ofstream& f)
 	{
 		f << ten << "|";
-		f << queQuan << "|";
 		f << ngaySinh << "|";
+		f << queQuan << "|";
 		f << maNhanVien << "|";
 		f << maPhong << "|";
-	//	f << maNguoiQuanLy << "|";
-		f << soNgayTangCa << endl;
+		//f << maNguoiQuanLy << "|";
+		f << soNgayTangCa << "|"<<endl;
 	}
 };

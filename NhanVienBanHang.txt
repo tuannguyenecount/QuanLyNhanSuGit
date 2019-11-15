@@ -1,0 +1,3 @@
+ai tuan|01/08/1995|Vinh Phuc|aituan|IT1|35|
+Bang Coder|1985|Ha Noi|bangcoder|IT2|6|
+Hue|1999|Ha Nam|hue|IT2|35|

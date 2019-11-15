@@ -1,2 +1,4 @@
+aituan1|ai tuan sua 1|
+aituan2|nguyen ai tuan 2|
 manager|giam doc|
 thuky|Thu ky|
